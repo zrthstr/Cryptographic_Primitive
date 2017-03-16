@@ -20,4 +20,4 @@ def getp(pmin=20, pmax=70):
 
 
 if __name__ == "__main__":
-	print ">>>> %d <<<<" % getp()
+	print ("Found prime from range [%d - %d]: %d"  % ( pmin, pmax, getp()))
