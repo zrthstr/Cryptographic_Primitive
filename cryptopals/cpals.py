@@ -37,6 +37,12 @@ symbol_frq = {
 ' ':10.0
 }
 
+def ascii2hexstr(ascii_str):
+    hex_str = ""
+    for a in ascii_str:
+        hex_str = hex_str + str(ord(a))
+    return hex_str
+
 
 def hexstr2ascii(hexstr):
     string = ""
@@ -110,10 +116,20 @@ def test_hex2base():
     for e in range(2000, 200000, 1001):
         print("0x%x --> \t\tbase64: %s" %( e,  hex2base(int2hexstr(e))))
 
-def test():
-    test_int2hexstr()
-    test_hex2base()
 
+def test_ascii2hexstr():
+    tests = ["A", "B", "C", "AA", "BB" , "CCC", "DDDD",
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789101112",
+            "abcdefghijklmnopqrstuvwxyz\n\r\t",
+            "this is a rather random text"]
+
+    for t in tests:
+        print('%s --> %s ' %(t, ascii2hexstr(t)))
+
+def test():
+    #test_int2hexstr()
+    #test_hex2base()
+    test_ascii2hexstr()
 
 if __name__ == "__main__":
     test()
