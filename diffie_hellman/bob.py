@@ -1,10 +1,12 @@
-#!/usr/bin/env python3
+#!/usr/bin/env pypy
 
 import random
 import dhredis as r
 
-amin = 1000
-amax = 9999
+f = r.factor
+
+amin = 1000 * f
+amax = 9999 * f
 b = random.randint(amin, amax)
 
 p = r.get("p")
@@ -18,7 +20,9 @@ r.set("B", B)
 A = r.get("A")
 
 S1 = A ** b % p 
-r.set("S1", S1)
+
+print("Secret: %d" % S1)
+#r.set("S1", S1)
 
 
 

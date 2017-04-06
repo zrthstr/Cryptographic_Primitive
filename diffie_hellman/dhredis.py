@@ -4,10 +4,12 @@ import redis
 import sys
 import time
 
-REDIS_EXPIRE = 5 # sec
+factor = 10
+
+REDIS_EXPIRE = 500 # sec
 
 WAIT_BETWEEN_TRYS = 500  # ms
-MAX_TRY_SEC = 3 # ms
+MAX_TRY_SEC = 500 # ms
 
 
 def init_redis():
@@ -32,5 +34,7 @@ def get(key):
 
 	sys.exit("failed to get value: %s. Stoppping." % key )
 
+
+
 if __name__ == "__main__":
-	main()
+    set("ABC", 123)
